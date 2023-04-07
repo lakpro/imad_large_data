@@ -21,10 +21,10 @@ async function main() {
     console.log(f);
     var number = (end - start) / 60000;
     number = Math.trunc(number * 100) / 100;
-    var number2 = (number / f + 1) * 60;
+    var number2 = (end - start) / f + 1;
     number2 = Math.trunc(number2 * 100) / 100;
     console.log(`Execution time: ${number} min `);
-    console.log(`Execution time per app: ${number2} sec `);
+    console.log(`Execution time per app: ${number2} msec `);
 
     // console.log(data);
     fs.writeFileSync(

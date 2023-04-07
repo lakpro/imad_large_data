@@ -3,7 +3,7 @@ const fs = require("fs");
 const start = Date.now();
 
 const list = require("./id1.json");
-const final = require("./final_1.json");
+const final = require("./final_5.json");
 
 const data = [];
 
@@ -21,14 +21,14 @@ async function main() {
     console.log(f);
     var number = (end - start) / 60000;
     number = Math.trunc(number * 100) / 100;
-    var number2 = (number / f + 1) * 60;
+    var number2 = (end - start) / f + 1;
     number2 = Math.trunc(number2 * 100) / 100;
     console.log(`Execution time: ${number} min `);
-    console.log(`Execution time per app: ${number2} sec `);
+    console.log(`Execution time per app: ${number2} msec `);
 
     // console.log(data);
     fs.writeFileSync(
-      `./data1.json`,
+      `./data5.json`,
       JSON.stringify(data),
       "utf8",
       function (err) {
