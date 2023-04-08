@@ -6,10 +6,13 @@ const list = require("./id1.json");
 const final = require("./final_6.json");
 
 const data = [];
-
+const init = 58000;
 async function main() {
   for (f in final) {
     // if (f == 50) break;
+
+    if (f <= init) continue;
+
     x = final[f];
     const y = await gplay.datasafety({ appId: final[f].AppId });
 
@@ -21,22 +24,24 @@ async function main() {
     console.log(f);
     var number = (end - start) / 60000;
     number = Math.trunc(number * 100) / 100;
-    var number2 = (end - start) / f + 1;
+    var number2 = (end - start) / (f - init + 1);
     number2 = Math.trunc(number2 * 100) / 100;
     console.log(`Execution time: ${number} min `);
     console.log(`Execution time per app: ${number2} msec `);
 
-    // console.log(data);
-    fs.writeFileSync(
-      `./data6.json`,
-      JSON.stringify(data),
-      "utf8",
-      function (err) {
-        if (err) {
-          return console.log(err);
+    if (f % 1000 == 0) {
+      // console.log(data);
+      fs.writeFileSync(
+        `./data6.json`,
+        JSON.stringify(data),
+        "utf8",
+        function (err) {
+          if (err) {
+            return console.log(err);
+          }
         }
-      }
-    );
+      );
+    }
   }
 }
 

@@ -21,23 +21,23 @@ async function main() {
     console.log(f);
     var number = (end - start) / 60000;
     number = Math.trunc(number * 100) / 100;
-    var number2 = (end - start) / f+1;
-    number2 = (Math.trunc(number2 * 100) /100) ;
+    var number2 = (end - start) / f + 1;
+    number2 = Math.trunc(number2 * 100) / 100;
     console.log(`Execution time: ${number} min `);
     console.log(`Execution time per app: ${number2} msec `);
-
-    // console.log(data);
-    fs.writeFileSync(
-      `./data2.json`,
-      JSON.stringify(data),
-      "utf8",
-      function (err) {
-        if (err) {
-          return console.log(err);
-        }
-      }
-    );
   }
+
+  // console.log(data);
+  fs.writeFileSync(
+    `./data2.json`,
+    JSON.stringify(data),
+    "utf8",
+    function (err) {
+      if (err) {
+        return console.log(err);
+      }
+    }
+  );
 }
 
 main();
